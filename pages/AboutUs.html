@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ترميز UTF-8 لدعم كل اللغات -->
+    <meta charset="UTF-8" />
+
+    <!-- لجعل الصفحة متوافقة مع كل الأجهزة -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- عنوان الصفحة اللي بيظهر في التاب -->
+    <title>Page Title</title>
+
+    <!-- ربط ملف CSS الرئيسي -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- تحميل ملفات JavaScript -->
+    <script src="/utility.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- زر فتح القائمة الجانبية -->
+    <button class="toggle-btn" id="sidebarToggle">☰ Menu</button>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+      <a href="/pages/Contact.html">Connect with us</a>
+      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+    </div>
+    
+    <div class="content-wrapper">
+      <header>
+        <!-- حاوية هيتحط فيها النافبار اللي جاي من ملف خارجي -->
+        <div id="navbar-container"></div>
+      </header>
+
+      <main>
+        <!-- محتوى صفحة من نحن -->
+        <div class="about-us-container">
+          <h1>AboutUs</h1>
+          <p>
+            <h3>
+              "Our
+              website is dedicated to showcasing and discussing the latest tech
+              products. We provide in-depth reviews, insights, and updates on a wide
+              range of technological innovations, from software to hardware, aimed at
+              helping tech enthusiasts and professionals stay informed about the
+              products that shape the tech industry.            </h3>
+          </p>
+
+          <br>
+
+          <!-- عنوان لفريق العمل -->
+          <h2> 👨‍💻Team members:</h2>
+
+          <div class="team">
+            <!-- فرد من الفريق -->
+            <div class="team-member">
+              <img src="/Images/ali_pic.jpg" alt="Team Member" />
+              <h3>Eng.ALi Mohmmed</h3>
+              <p>Front - end dev</p>
+            </div>
+
+            <!-- فرد من الفريق -->
+            <div class="team-member">
+              <img src="/Images/mohimg4.jpg" alt="Team Member" />
+              <h3>Eng.Mohmmed saaed</h3>
+              <p>Back - end dev</p>
+            </div>
+
+            <!-- فرد من الفريق -->
+            <div class="team-member">
+              <img src="/Images/eziz.jpg" alt="Team Member" />
+              <h3>Eng.Ezeldin Khaled</h3>
+              <p>Back - end dev</p>
+            </div>
+
+            <!-- فرد من الفريق -->
+            <div class="team-member">
+              <img src="/Images/ali2.jpg" alt="Team Member" />
+              <h3>Eng.Aly mohamed ahmed ramzy</h3>
+              <p>Back - end dev</p>
+            </div>
+
+            <!-- فرد من الفريق (الصورة فيها غلطة في الكود لأن مفيش علامة اقتباس مقفولة) -->
+            <div class="team-member">
+              <img src="/Images/name.jpg alt="Team Member" />
+              <h3>Eng.Mohmmed saaed</h3>
+              <p>Back - end dev</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- فوتر الصفحة -->
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Use Cases</h3>
+            <a href="#">Gaming Laptops</a>
+            <a href="#">Business Laptops</a>
+            <a href="#">Workstations</a>
+            <a href="#">Budget-Friendly Laptops</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- سكريبت لتفعيل زر القائمة الجانبية -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+        const contentWrapper = document.querySelector(".content-wrapper");
+        const navbar = document.querySelector("nav");
+
+        if (sidebarToggle && sidebar && contentWrapper) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+
+            if (sidebar.classList.contains("active")) {
+              contentWrapper.style.marginLeft = "250px";
+              if (navbar) {
+                navbar.style.marginLeft = "250px";
+                navbar.style.width = "calc(100% - 250px)";
+              }
+            } else {
+              contentWrapper.style.marginLeft = "0";
+              if (navbar) {
+                navbar.style.marginLeft = "0";
+                navbar.style.width = "100%";
+              }
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- تحميل النافبار من ملف خارجي -->
+    <script>
+      fetch('/NavBar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ترميز الصفحة UTF-8 -->
+  <meta charset="UTF-8" />
+  <!-- لجعل الصفحة متوافقة مع كل الشاشات (Responsive) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+
+  <!-- ربط ملف التنسيق الأساسي -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- تحميل سكريبتات خاصة بالوظائف العامة والتفاعل -->
+  <script src="/js/utility.js" defer></script>
+  <script src="/script.js" defer></script>
+</head>
+<body>
+
+  <!-- المحتوى الرئيسي للصفحة -->
+  <div class="content-wrapper">
+    <header>
+      <!-- حاوية النافبار اللي هيتحمل ديناميكي -->
+      <div id="navbar-container"></div>
+    </header>
+
+    <main>
+      <div class="container1">
+        <!-- عنوان الصفحة ووصف بسيط -->
+        <div class="header">
+          <h1>Contact Us</h1>
+          <p>We'd love to hear from you. Feel free to reach out using the form below or through our contact details.</p>
+        </div>
+
+        <div class="contact-content">
+          <!-- جزء معلومات التواصل -->
+          <div class="contact-info">
+            <h2>Get In Touch</h2>
+
+            <!-- عنوان -->
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-details">
+                <h3>Address</h3>
+                <p>123 Main Street, Suite 456</p>
+                <p>Cityville, State 12345</p>
+              </div>
+            </div>
+
+            <!-- تليفونات -->
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div class="info-details">
+                <h3>Phone</h3>
+                <p>Office: (123) 456-7890</p>
+                <p>Support: (123) 456-7891</p>
+              </div>
+            </div>
+
+            <!-- إيميلات -->
+            <div class="info-item">
+              <div class="info-icon">✉️</div>
+              <div class="info-details">
+                <h3>Email</h3>
+                <p>info@yourwebsite.com</p>
+                <p>support@yourwebsite.com</p>
+              </div>
+            </div>
+
+            <!-- مواعيد العمل -->
+            <div class="info-item">
+              <div class="info-icon">🕒</div>
+              <div class="info-details">
+                <h3>Business Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                <p>Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- نموذج الاتصال -->
+          <div class="contact-form">
+            <h2>Send Us a Message</h2>
+
+            <!-- رسالة نجاح بعد الإرسال -->
+            <div class="success-message" id="success-message" style="display:none;">
+              Your message has been sent successfully. We'll get back to you soon!
+            </div>
+
+            <!-- الفورم -->
+            <form id="contactForm">
+              <!-- الاسم -->
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" class="form-control" placeholder="John Doe" />
+                <div class="error-message" id="name-error">Please enter your name</div>
+              </div>
+
+              <!-- الإيميل -->
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" class="form-control" placeholder="john@example.com" />
+                <div class="error-message" id="email-error">Please enter a valid email address</div>
+              </div>
+
+              <!-- العنوان -->
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" class="form-control" placeholder="How can we help?" />
+                <div class="error-message" id="subject-error">Please enter a subject</div>
+              </div>
+
+              <!-- الرسالة -->
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" class="form-control" placeholder="Type your message here..."></textarea>
+                <div class="error-message" id="message-error">Please enter your message</div>
+              </div>
+
+              <!-- زر الإرسال -->
+              <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- خريطة جوجل -->
+        <div class="map-container">
+          <iframe
+            src="https://maps.google.com/maps?q=new+york+city&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <!-- روابط السوشيال ميديا -->
+        <div class="social-media">
+          <a href="https://www.facebook.com" class="social-icon">f</a>
+          <a href="https://www.twitter.com" class="social-icon">t</a>
+          <a href="https://www.instagram.com" class="social-icon">in</a>
+          <a href="https://www.linkedin.com" class="social-icon">ig</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Use Cases</h3>
+          <a href="#">Gaming Laptops</a>
+          <a href="#">Business Laptops</a>
+          <a href="#">Workstations</a>
+          <a href="#">Budget-Friendly Laptops</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- سكريبت فتح وقفل القائمة الجانبية -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sidebarToggle = document.getElementById("sidebarToggle");
+      const sidebar = document.getElementById("sidebar");
+      const contentWrapper = document.querySelector(".content-wrapper");
+      const navbar = document.querySelector("nav");
+
+      sidebarToggle.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+
+        if (sidebar.classList.contains("active")) {
+          contentWrapper.style.marginLeft = "250px";
+          if (navbar) {
+            navbar.style.marginLeft = "250px";
+            navbar.style.width = "calc(100% - 250px)";
+          }
+        } else {
+          contentWrapper.style.marginLeft = "0";
+          if (navbar) {
+            navbar.style.marginLeft = "0";
+            navbar.style.width = "100%";
+          }
+        }
+      });
+    });
+  </script>
+
+  <!-- تحميل النافبار من ملف خارجي -->
+  <script>
+    fetch('/NavBar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error fetching navbar:', error));
+  </script>
+
+  <!-- سكريبت إرسال البيانات للباك اند -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // منع الفورم من الإرسال التقليدي
+
+      // تجميع البيانات من الفورم
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      // إرسال البيانات إلى ملف PHP في الباك اند
+      fetch("/backend/sendMessage.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&subject=${encodeURIComponent(subject)}&message=${encodeURIComponent(message)}`
+      })
+        .then(res => res.text())
+        .then(data => {
+          // عرض رسالة نجاح بعد الإرسال
+          document.getElementById("success-message").style.display = "block";
+          console.log("Server response:", data);
+        })
+        .catch(error => console.error("Error sending message:", error));
+    });
+  </script>
+
+</body>
+</html>

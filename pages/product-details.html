@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../cart.js" defer></script>
+    <script src="../script.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="/pages/Products.html">Products</a>
+        <a href="/pages/Contect.html">Contact</a>
+        <a href="/pages/AboutUs.html">AboutUs</a>
+      </div>
+      <div class="nav-buttons">
+        <a href="/pages/login.html" class="login">login</a>
+        <a href="/pages/signUp.html" class="sign-up">Sign up</a>
+      </div>
+    </nav>
+    <button class="toggle-btn" id="sidebarToggle"> Menu</button>
+
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+      <a href="/pages/Contect.html">Connect with us</a>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="container product-detail-container">
+        <div class="product-detail-card shadow">
+          <img
+            id="productImage"
+            src=""
+            alt="Product Image"
+            class="product-detail-image"
+          />
+          <div class="product-detail-content">
+            <h1 id="productName" class="product-detail-title"></h1>
+            <p id="productDesc" class="product-detail-description"></p>
+            <p id="productPrice" class="product-detail-price"></p>
+            <button class="order-btn product-detail-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Get product data from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Define cart object and its methods
+        const cart = {
+          items: [],
+          addItem: (product) => {
+            cart.items.push(product);
+            alert('Product added to cart!');
+          },
+        };
+
+        const products = {
+          '1': {
+            id: 1,
+            name: 'GAMER XRT 500',
+            description: '16GB RAM • 1TB SSD • RTX 4060',
+            price: 1299,
+            image: '../images/laptop.jpg',
+          },
+          '2': {
+            id: 2,
+            name: 'Pro Wireless',
+            description: '40h Battery • Active Noise Cancelling',
+            price: 199,
+            image: '../images/camara pic.jpg',
+          },
+          '3': {
+            id: 3,
+            name: 'Smart Watch X2',
+            description: 'Heart Rate • GPS • 5 ATM',
+            price: 299,
+            image: '../images/watch.jpg',
+          },
+        };
+
+        const product = products[productId];
+
+        if (product) {
+          document.getElementById('productImage').src = product.image;
+          document.getElementById('productName').textContent = product.name;
+          document.getElementById('productDesc').textContent = product.description;
+          document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+
+          // Add event listener to add to cart button
+          document.querySelector('.product-detail-btn').addEventListener('click', () => {
+            cart.addItem(product);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- تعريف نوع الترميز -->
+    <meta charset="UTF-8" />
+    
+    <!-- تخلي التصميم متجاوب مع الموبايل -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ربط ملف CSS الرئيسي بتاع الموقع -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <title>Nav</title>
+  </head>
+  <body>
+    <!-- عنصر التنقل الرئيسي (Navbar) -->
+    <nav>
+      <!-- جزء الروابط الأساسية -->
+      <div class="nav-links">
+        <!-- رابط للصفحة الرئيسية -->
+        <a href="/index.html">Home</a>
+
+        <!-- رابط لصفحة المنتجات -->
+        <a href="/pages/Products.html">Products</a>
+
+        <!-- رابط لصفحة "من نحن" -->
+        <a href="/pages/AboutUs.html">About Us</a>
+      </div>
+
+      <!-- جزء الأزرار في النافبار -->
+      <div class="nav-buttons">
+        <!-- زر تسجيل الدخول -->
+        <a href="/pages/login.html" class="login">Login</a>
+
+        <!-- زر إنشاء حساب جديد -->
+        <a href="/pages/signUp.html" class="sign-up">Sign up</a>
+
+        <!-- زر لتفعيل الوضع الليلي (Dark Mode) -->
+        <a><button class="toggle-btn" onclick="toggleDarkMode()">🌓</button></a>
+
+        <!-- أيقونة عربة التسوق -->
+        <a href="/pages/cart.html" class="cart-icon-container">
+          <img
+            src="/Images/shopping-cart.svg"
+            alt="Shopping Cart"
+            id="cartIcon"
+          />
+          <!-- عدد العناصر في السلة (بيتغير بالـJavaScript) -->
+          <span id="cartCount">0</span>
+        </a>
+      </div>
+    </nav>
+  </body>
+</html>

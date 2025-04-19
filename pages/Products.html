@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/utility.js" defer></script>
+    <!-- Include other page-specific scripts here -->
+  </head>
+  <body>
+    <button class="toggle-btn" id="sidebarToggle">☰ Menu</button>
+
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+      <a href="/pages/Contact.html">Connect with us</a>
+      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+    </div>
+
+    <div class="content-wrapper">
+      <header>
+        <div id="navbar-container"></div>
+      </header>
+
+      <main>
+        <div class="container">
+          <h1 class="page-title">Featured Tech Products</h1>
+          <div class="products-grid">
+            <!-- المنتج الأول -->
+            <a href="product-details.html?id=1" class="card-link">
+              <div class="card shadow">
+                <img
+                  src="../images/laptop.jpg"
+                  alt="Gaming Laptop"
+                  class="product-image"
+                />
+                <div class="card-content">
+                  <h2>GAMER XRT 500</h2>
+                  <p class="specs">16GB RAM • 1TB SSD • RTX 4060</p>
+                  <p class="price">$1,299</p>
+                  <button class="order-btn">Add to Cart</button>
+                </div>
+              </div>
+            </a>
+
+            <!-- المنتج الثاني -->
+            <a href="product-details.html?id=2" class="card-link">
+              <div class="card shadow">
+                <img
+                  src="../images/camara pic.jpg"
+                  alt="Wireless Headphones"
+                  class="product-image"
+                />
+                <div class="card-content">
+                  <h2>SONY camera</h2>
+                  <p class="specs">40h Battery • Active Noise Cancelling</p>
+                  <p class="price">$199</p>
+                  <button class="order-btn">Add to Cart</button>
+                </div>
+              </div>
+            </a>
+
+            <!-- المنتج الثالث -->
+            <a href="product-details.html?id=3" class="card-link">
+              <div class="card shadow">
+                <img
+                  src="../images/watch.jpg"
+                  alt="Smartwatch"
+                  class="product-image"
+                />
+                <div class="card-content">
+                  <h2>Smart Watch X2</h2>
+                  <p class="specs">Heart Rate • GPS • 5 ATM</p>
+                  <p class="price">$299</p>
+                  <button class="order-btn">Add to Cart</button>
+                </div>
+              </div>
+            </a>
+            
+          </div>
+          
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Use Cases</h3>
+            <a href="#">Gaming Laptops</a>
+            <a href="#">Business Laptops</a>
+            <a href="#">Workstations</a>
+            <a href="#">Budget-Friendly Laptops</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Include the sidebar toggle functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set up sidebar toggle functionality
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+        const contentWrapper = document.querySelector(".content-wrapper");
+        const navbar = document.querySelector("nav");
+
+        if (sidebarToggle && sidebar && contentWrapper) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+
+            if (sidebar.classList.contains("active")) {
+              contentWrapper.style.marginLeft = "250px";
+              if (navbar) {
+                navbar.style.marginLeft = "250px";
+                navbar.style.width = "calc(100% - 250px)";
+              }
+            } else {
+              contentWrapper.style.marginLeft = "0";
+              if (navbar) {
+                navbar.style.marginLeft = "0";
+                navbar.style.width = "100%";
+              }
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      fetch('/NavBar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    
+  </body>
+</html>

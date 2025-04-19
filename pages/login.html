@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/utility.js" defer></script>
+  </head>
+  <body>
+    <button class="toggle-btn" id="sidebarToggle">☰ Menu</button>
+
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+      <a href="/pages/Contact.html">Connect with us</a>
+      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+    </div>
+    
+    <div class="content-wrapper">
+      <header>
+        <div id="navbar-container"></div>
+      </header>
+
+      <main>
+        <div class="auth-container">
+          <div class="auth-card">
+              <h2>Login</h2>
+              <form id="loginForm">
+                  <div class="form-group">
+                      <label for="loginEmail">Email</label>
+                      <input type="email" id="loginEmail" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="loginPassword">Password</label>
+                      <input type="password" id="loginPassword" required>
+                  </div>
+                  <button type="submit" class="auth-btn">Login</button>
+              </form>
+              <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+          </div>
+      </div>
+
+      <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+          event.preventDefault(); // علشان يمنع الريلود الافتراضي
+
+          const email = document.getElementById('loginEmail').value.trim();
+          const password = document.getElementById('loginPassword').value.trim();
+
+          if (email === 'admin@admin.com' && password === 'admin') {
+            window.location.href = '/pages/Dashboard.html'; // صفحة الادمن
+          } else if (email && password) {
+            window.location.href = '/index.html'; // صفحة اليوزر العادي
+          } else {
+            alert('من فضلك ادخل بيانات صحيحة');
+          }
+        });
+      </script>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Use Cases</h3>
+            <a href="#">Gaming Laptops</a>
+            <a href="#">Business Laptops</a>
+            <a href="#">Workstations</a>
+            <a href="#">Budget-Friendly Laptops</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- Include the sidebar toggle functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+        const contentWrapper = document.querySelector(".content-wrapper");
+        const navbar = document.querySelector("nav");
+
+        if (sidebarToggle && sidebar && contentWrapper) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+
+            if (sidebar.classList.contains("active")) {
+              contentWrapper.style.marginLeft = "250px";
+              if (navbar) {
+                navbar.style.marginLeft = "250px";
+                navbar.style.width = "calc(100% - 250px)";
+              }
+            } else {
+              contentWrapper.style.marginLeft = "0";
+              if (navbar) {
+                navbar.style.marginLeft = "0";
+                navbar.style.width = "100%";
+              }
+            }
+          });
+        }
+      });
+    </script>
+
+    <script>
+      fetch('/NavBar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    
+  </body>
+</html>

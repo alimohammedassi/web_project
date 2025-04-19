@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Title</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/utility.js" defer></script>
+    <!-- Include other page-specific scripts here -->
+  </head>
+  <body>
+    <button class="toggle-btn" id="sidebarToggle">☰ Menu</button>
+
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+      <a href="/pages/Contact.html">Connect with us</a>
+      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+    </div>
+    
+    <div class="content-wrapper">
+      <header>
+        <div id="navbar-container"></div>
+      </header>
+
+      <main>
+        <div class="settings-container">
+          <div class="settings-header">
+            <h1>Settings</h1>
+            <div class="theme-toggle">
+              <span>☀️</span>
+              <label class="theme-switch">
+                <input type="checkbox" id="darkModeToggle" />
+                <span class="theme-slider"></span>
+              </label>
+              <span>🌙</span>
+            </div>
+          </div>
+      
+          <div class="settings-card">
+            <h2 class="settings-title">Account Information</h2>
+            <div class="settings-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" value="johndoe123" />
+            </div>
+            <div class="settings-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" value="john.doe@example.com" />
+            </div>
+            <div class="settings-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" value="••••••••••" />
+            </div>
+          </div>
+      
+          <div class="settings-card">
+            <h2 class="settings-title">Notification Preferences</h2>
+            <div class="switch-group">
+              <div>
+                <div class="switch-title"><span class="icon-muted">📱</span>Push Notifications</div>
+                <div class="switch-description">Receive notifications on your device</div>
+              </div>
+              <label class="theme-switch">
+                <input type="checkbox" checked />
+                <span class="theme-slider"></span>
+              </label>
+            </div>
+            <div class="switch-group">
+              <div>
+                <div class="switch-title"><span class="icon-muted">📧</span>Email Notifications</div>
+                <div class="switch-description">Receive updates via email</div>
+              </div>
+              <label class="theme-switch">
+                <input type="checkbox" checked />
+                <span class="theme-slider"></span>
+              </label>
+            </div>
+            <div class="switch-group">
+              <div>
+                <div class="switch-title"><span class="icon-muted">🔔</span>Marketing Communications</div>
+                <div class="switch-description">Receive promotions and news</div>
+              </div>
+              <label class="theme-switch">
+                <input type="checkbox" />
+                <span class="theme-slider"></span>
+              </label>
+            </div>
+          </div>
+      
+          <div class="settings-save">
+            <button class="settings-btn" id="saveButton">Save Changes</button>
+          </div>
+        </div>
+      
+        <script>
+          document.getElementById('darkModeToggle').addEventListener('change', function () {
+            document.body.classList.toggle('dark-mode', this.checked);
+          });
+        </script>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Use Cases</h3>
+            <a href="#">Gaming Laptops</a>
+            <a href="#">Business Laptops</a>
+            <a href="#">Workstations</a>
+            <a href="#">Budget-Friendly Laptops</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <!-- Include the sidebar toggle functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set up sidebar toggle functionality
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+        const contentWrapper = document.querySelector(".content-wrapper");
+        const navbar = document.querySelector("nav");
+
+        if (sidebarToggle && sidebar && contentWrapper) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+
+            if (sidebar.classList.contains("active")) {
+              contentWrapper.style.marginLeft = "250px";
+              if (navbar) {
+                navbar.style.marginLeft = "250px";
+                navbar.style.width = "calc(100% - 250px)";
+              }
+            } else {
+              contentWrapper.style.marginLeft = "0";
+              if (navbar) {
+                navbar.style.marginLeft = "0";
+                navbar.style.width = "100%";
+              }
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      fetch('/NavBar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+    </script>
+    
+  </body>
+</html>
