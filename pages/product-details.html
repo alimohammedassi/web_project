@@ -21,7 +21,7 @@
         <a href="/pages/signUp.html" class="sign-up">Sign up</a>
       </div>
     </nav>
-    <button class="toggle-btn" id="sidebarToggle"> Menu</button>
+    <button class="toggle-btn" id="sidebarToggle">☰ Menu</button>
 
     <div class="sidebar" id="sidebar">
       <a href="/index.html">Home</a>
@@ -32,17 +32,23 @@
     <div class="content-wrapper">
       <div class="container product-detail-container">
         <div class="product-detail-card shadow">
-          <img
-            id="productImage"
-            src=""
-            alt="Product Image"
-            class="product-detail-image"
-          />
+          <div class="product-detail-image-container">
+            <img
+              id="productImage"
+              src=""
+              alt="Product Image"
+              class="product-detail-image"
+            />
+          </div>
           <div class="product-detail-content">
             <h1 id="productName" class="product-detail-title"></h1>
+            <div class="product-specifications" id="productSpecs"></div>
             <p id="productDesc" class="product-detail-description"></p>
             <p id="productPrice" class="product-detail-price"></p>
-            <button class="order-btn product-detail-btn">Add to Cart</button>
+            <div class="product-action-buttons">
+              <button class="order-btn product-detail-btn">Add to Cart</button>
+              <button class="go_home" onclick="window.location.href='../pages/Products.html'">Back</button>
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +64,7 @@
           items: [],
           addItem: (product) => {
             cart.items.push(product);
-            alert('Product added to cart!');
+            alert('Product added to cart!✅');
           },
         };
 
@@ -66,24 +72,193 @@
           '1': {
             id: 1,
             name: 'GAMER XRT 500',
-            description: '16GB RAM • 1TB SSD • RTX 4060',
+            description: 'Experience ultimate gaming performance with the GAMER XRT 500. Featuring the latest RTX 4060 graphics card and 12th Gen Intel Core i7 processor, this laptop delivers exceptional framerates and responsiveness for all your favorite games. The 15.6" FHD IPS display provides vibrant colors and wide viewing angles for an immersive gaming experience.',
+            specs: [
+              '16GB DDR5 RAM',
+              '1TB NVMe SSD',
+              'NVIDIA RTX 4060 (8GB GDDR6)',
+              'Intel Core i7-12700H (14-core)',
+              '15.6" FHD (1920x1080) IPS Display, 144Hz',
+              'Windows 11 Home',
+              'RGB Backlit Keyboard',
+              'Up to 8 hours battery life',
+              'Weight: 4.85lbs',
+              'Dimensions: 14.2" x 10.3" x 1.1"'
+            ],
             price: 1299,
             image: '../images/laptop.jpg',
           },
           '2': {
             id: 2,
-            name: 'Pro Wireless',
-            description: '40h Battery • Active Noise Cancelling',
-            price: 199,
+            name: 'SONY Alpha A7 III',
+            description: 'The Sony Alpha A7 III redefines full-frame photography with its exceptional image quality and versatile features. Perfect for professionals and enthusiasts alike, this mirrorless camera captures stunning details with its 24.2MP sensor and advanced autofocus system. The 4K video capability makes it an ideal choice for content creators.',
+            specs: [
+              '24.2MP Full-Frame Exmor R CMOS Sensor',
+              'BIONZ X Image Processor',
+              '4K Video Recording',
+              '10fps Continuous Shooting',
+              '693-Point Hybrid AF System',
+              '5-Axis In-Body Image Stabilization',
+              'ISO Range: 100-51200 (Expandable)',
+              'Dual SD Card Slots',
+              'Weather-Sealed Construction',
+              'Battery Life: Approx. 710 shots'
+            ],
+            price: 1999,
             image: '../images/camara pic.jpg',
           },
           '3': {
             id: 3,
             name: 'Smart Watch X2',
-            description: 'Heart Rate • GPS • 5 ATM',
+            description: 'Stay connected and track your fitness goals with the Smart Watch X2. This premium smartwatch features continuous heart rate monitoring, built-in GPS, and comprehensive health tracking. With its 5 ATM water resistance, you can wear it during swimming and other water activities without worry.',
+            specs: [
+              'Advanced Heart Rate Monitoring',
+              'Built-in GPS',
+              '5 ATM Water Resistance',
+              'AMOLED Touchscreen Display',
+              'Up to 7 Days Battery Life',
+              'Sleep Tracking',
+              'Stress Monitoring',
+              'Compatible with iOS and Android',
+              'Notification Alerts',
+              'Music Control'
+            ],
             price: 299,
             image: '../images/watch.jpg',
           },
+          '4': {
+            id: 4,
+            name: 'Honor MagicBook Art 14',
+            description: 'Experience visual excellence with the Honor MagicBook Art 14, featuring the world\'s first 4320Hz PWM dimming OLED display. This innovative laptop combines stunning visuals with powerful performance for both creative professionals and everyday users.',
+            specs: [
+              '14" OLED Display (3840 x 2400)',
+              '4320Hz PWM Dimming Technology',
+              'Intel Core i7-1360P Processor',
+              '16GB LPDDR5 RAM',
+              '1TB PCIe SSD',
+              'Intel Iris Xe Graphics',
+              'Windows 11 Home',
+              'Up to 10 Hours Battery Life',
+              'Weight: 1.35kg',
+              'Fingerprint Power Button'
+            ],
+            price: 50000,
+            image: '../images/Honor MagicBook Art 14_ World\'s First 4320Hz PWM Dimming OLED Laptop Launched Globally Ajleeblog.jpeg',
+          },
+          '5': {
+            id: 5,
+            name: 'HP Victus 16-r0076TX',
+            description: 'Elevate your gaming experience with the HP Victus 16-r0076TX Gaming Laptop. Featuring a powerful Intel Core i5-13500HX processor and NVIDIA RTX 4050 graphics, this laptop delivers exceptional performance for modern games and content creation applications.',
+            specs: [
+              'Intel Core i5-13500HX Processor',
+              'NVIDIA GeForce RTX 4050 (6GB GDDR6)',
+              '16GB DDR5 RAM',
+              '512GB PCIe NVMe SSD',
+              '16.1" FHD (1920x1080) IPS Display',
+              '144Hz Refresh Rate',
+              'Windows 11 Home',
+              'RGB Backlit Keyboard',
+              'Battery Life: Up to 6 Hours',
+              'Weight: 2.3kg'
+            ],
+            price: 1199,
+            image: '../images/HP Victus 16-r0076TX Gaming Laptop Launched in India ( Specs_ Core i5-13500HX _ RTX 4050 _ 16GB ram _ 512GB SSD _ 144hz display ) _ Tech Stories India _ Technology News Online.jpeg',
+          },
+          '6': {
+            id: 6,
+            name: 'Apple Fitness Plus',
+            description: 'Transform your fitness routine with Apple Fitness+, a premium subscription service designed to help you achieve your health goals. Get access to a wide variety of workouts led by expert trainers, with new content added weekly.',
+            specs: [
+              'Subscription-Based Fitness Service',
+              '11 Workout Types (HIIT, Yoga, Strength, etc.)',
+              'Integration with Apple Watch Metrics',
+              'Personalized Recommendations',
+              'New Workouts Added Weekly',
+              'Time-Sync Music',
+              'Compatible with iPhone, iPad, and Apple TV',
+              'Beginner to Advanced Workouts',
+              'Meditation Sessions',
+              'Annual Subscription Available'
+            ],
+            price: 10000,
+            image: '../images/I used Apple Fitness Plus for 7 days_ Here\'s my honest review.jpeg',
+          },
+          '7': {
+            id: 7,
+            name: 'JBL Quantum 800',
+            description: 'Immerse yourself in premium sound with the JBL Quantum 800 gaming headphones. Featuring active noise cancellation and JBL QuantumSURROUND, these wireless headphones deliver an exceptional audio experience for gaming and multimedia content.',
+            specs: [
+              'Active Noise Cancellation',
+              'JBL QuantumSURROUND Sound',
+              '2.4GHz Wireless Connection',
+              'Bluetooth 5.0',
+              'Up to 14 Hours Battery Life',
+              'Voice-Focus Boom Microphone',
+              'RGB Lighting Effects',
+              'Memory Foam Ear Cushions',
+              'Compatible with PC, PlayStation, Xbox, Nintendo Switch',
+              'JBL QuantumENGINE PC Software'
+            ],
+            price: 199,
+            image: '../images/JBL Headphones - Firat Tuzunkan on Fstoppers.jpeg',
+          },
+          '8': {
+            id: 8,
+            name: 'MacBook Pro 16-inch',
+            description: 'Experience unprecedented power with the MacBook Pro 16-inch. Featuring the advanced M3 Pro chip, this laptop delivers exceptional performance for professional workflows including video editing, 3D rendering, and software development.',
+            specs: [
+              'Apple M3 Pro Chip',
+              '12-core CPU, 19-core GPU',
+              '32GB Unified Memory',
+              '1TB SSD Storage',
+              '16.2" Liquid Retina XDR Display',
+              'ProMotion Technology (120Hz)',
+              'Up to 22 Hours Battery Life',
+              'Three Thunderbolt 4 Ports',
+              'HDMI Port and SD Card Slot',
+              'Backlit Magic Keyboard with Touch ID'
+            ],
+            price: 2499,
+            image: '../images/MacBook Pro 16-inch Space Gray Mockup.jpeg',
+          },
+          '9': {
+            id: 9,
+            name: 'SONY 1000X M3',
+            description: 'Enjoy industry-leading noise cancellation with the Sony 1000X M3 headphones. These premium wireless headphones deliver exceptional sound quality and comfort for extended listening sessions, making them perfect for travel, work, and everyday use.',
+            specs: [
+              'Industry-Leading Noise Cancellation',
+              'LDAC Wireless Technology',
+              'Up to 30 Hours Battery Life',
+              'Quick Charge (5 Hours from 10 Minutes)',
+              'Touch Controls',
+              'HD Noise-Cancelling Processor QN1',
+              'Foldable Design',
+              'Built-in Microphone for Calls',
+              'Adaptive Sound Control',
+              'Ambient Sound Mode'
+            ],
+            price: 249,
+            image: '../images/SONY 1000X M3 - Promotional Advertisement - Janith Lekamwasam.jpeg',
+          },
+          '10': {
+            id: 10,
+            name: 'iPad Pro 12.9"',
+            description: 'Unleash your creativity with the iPad Pro 12.9". Powered by the Apple M2 chip, this tablet delivers desktop-class performance in a portable form factor. The Liquid Retina XDR display offers exceptional brightness and contrast for professional creative work.',
+            specs: [
+              'Apple M2 Chip',
+              '8-core CPU, 10-core GPU',
+              '256GB Storage',
+              '12.9" Liquid Retina XDR Display',
+              'ProMotion Technology (120Hz)',
+              'True Tone Display',
+              'Ultra Wide Front Camera with Center Stage',
+              'Face ID',
+              'USB-C Thunderbolt / USB 4 Port',
+              'Compatible with Apple Pencil and Magic Keyboard'
+            ],
+            price: 1099,
+            image: '../images/These Are the Best Deals on Tech Products During the Spring Sale Season.jpeg',
+          }
         };
 
         const product = products[productId];
@@ -93,10 +268,54 @@
           document.getElementById('productName').textContent = product.name;
           document.getElementById('productDesc').textContent = product.description;
           document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
-
+          
+          // Add product specifications
+          const specsContainer = document.getElementById('productSpecs');
+          const specsList = document.createElement('ul');
+          specsList.className = 'specs-list';
+          
+          product.specs.forEach(spec => {
+            const specItem = document.createElement('li');
+            specItem.textContent = spec;
+            specsList.appendChild(specItem);
+          });
+          
+          specsContainer.appendChild(specsList);
+          
           // Add event listener to add to cart button
           document.querySelector('.product-detail-btn').addEventListener('click', () => {
             cart.addItem(product);
+          });
+        }
+      });
+    </script>
+    
+    <!-- Include the sidebar toggle functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set up sidebar toggle functionality
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+        const contentWrapper = document.querySelector(".content-wrapper");
+        const navbar = document.querySelector("nav");
+
+        if (sidebarToggle && sidebar && contentWrapper) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+
+            if (sidebar.classList.contains("active")) {
+              contentWrapper.style.marginLeft = "250px";
+              if (navbar) {
+                navbar.style.marginLeft = "250px";
+                navbar.style.width = "calc(100% - 250px)";
+              }
+            } else {
+              contentWrapper.style.marginLeft = "0";
+              if (navbar) {
+                navbar.style.marginLeft = "0";
+                navbar.style.width = "100%";
+              }
+            }
           });
         }
       });
