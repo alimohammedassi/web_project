@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- تحديد ترميز الصفحة لدعم كل اللغات -->
     <meta charset="UTF-8" />
 
@@ -21,56 +23,33 @@
     <!-- بداية الـmain الخاص بالمحتوى الرئيسي -->
 
     <main>
-      <!-- عنصر أيقونة السلة - غالباً بيظهر عدد العناصر فيها -->
-      <div class="cart-icon-container">
-        <span id="cartCount">0</span> <!-- عدد العناصر في السلة -->
-      </div>
-  
-      <!-- نافذة السلة اللي بتفتح كمودال عند الضغط -->
-      <div class="cart-modal">
+    <!-- مكان لعرض النافبار -->
+    
+      <!-- هنعدل الكلاس من cart-modal إلى full-cart -->
+      <div class="full-cart">
         <div class="cart-modal-content">
-          <!-- زر الإغلاق (X) -->
-          <span class="close-cart">&times;</span>
-
-          <!-- عنوان النافذة -->
+        
           <h2 class="cart-title">Your Shopping Cart</h2>
-  
-          <!-- هنا بتتحط العناصر اللي جوه السلة -->
+    
           <div class="cart-items">
-            <!-- لو السلة فاضية بيتعرض الجزء ده -->
             <div class="empty-cart">
               <div class="empty-cart-icon">🛒</div>
               <p>Your cart is empty</p>
             </div>
           </div>
-  
-          <!-- ملخص الحساب - المجموع الكلي وزراير الإجراء -->
+    
           <div class="cart-summary">
-            <!-- الجزء الخاص بالمجموع الكلي -->
             <div class="cart-total">
               <span class="cart-total-label">Total:</span>
-              <span class="cart-total-price">$0.00</span> <!-- المبلغ الإجمالي -->
+              <span class="cart-total-price">$0.00</span>
             </div>
-
-            <!-- زر الذهاب إلى صفحة الدفع -->
             <button class="checkout-btn">Proceed to Checkout</button>
-
-            <!-- زر للرجوع إلى الصفحة الرئيسية -->
             <button class="go_home" onclick="window.location.href='../index.html'">Go home</button>
           </div>
         </div>
       </div>
-
-      <!-- سكريبت لتحميل نافبار خارجي من ملف NavBar.html -->
-      <script>
-        fetch('/NavBar.html')
-          .then(res => res.text()) // تحويل الاستجابة لنص HTML
-          .then(data => {
-            // حقن محتوى النافبار داخل العنصر اللي ID بتاعه navbar-container
-            document.getElementById('navbar-container').innerHTML = data;
-          });
-      </script>
     </main>
+    
 
     <!-- نهاية البودي -->
   </body>

@@ -23,13 +23,13 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  background: var(--light-color);
-  overflow-x: hidden;
-  color: var(--dark-color);
+  font-family: 'Rajdhani', sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #FCF7F8;
+  color: #333;
 }
+
 
 .container {
   display: grid;
