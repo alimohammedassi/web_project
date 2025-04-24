@@ -80,24 +80,30 @@
                         <option value="camera">Camera</option>
                         <option value="watch">Watch</option>
                         <option value="headphone">Headphones</option>
-                        <option value="subscription">Subscription</option>
+                        
                     </select>
+      <main>
+        <div class="container">
+          <h1 class="page-title">Featured Tech Products</h1>
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <a href="product-details.html?id=1" class="card-link">
+              <div class="card shadow">
+                <div class="product-image-container">
+                  <img
+                    src="../images/laptop.jpg"
+                    alt="Gaming Laptop"
+                    class="product-image"
+                  />
+                </div>
+                <div class="card-content">
+                  <h2>GAMER XRT 500</h2>
+                  <p class="specs">16GB RAM • 1TB SSD • RTX 4060</p>
+                  <p class="price">$1,299</p>
+                  <button class="order-btn">Add to Cart</button>
                 </div>
 
-                <div class="products-grid">
-                    <a href="product-details.html?id=1" class="card-link" data-category="laptop">
-                        <div class="card shadow">
-                            <div class="product-image-container">
-                                <img src="../images/laptop.jpg" alt="Gaming Laptop" class="product-image" />
-                            </div>
-                            <div class="card-content">
-                                <h2>GAMER XRT 500</h2>
-                                <p class="specs">16GB RAM • 1TB SSD • RTX 4060</p>
-                                <p class="price">$1,299</p>
-                            </div>
-                        </div>
-                    </a>
-
+               
                     <a href="product-details.html?id=2" class="card-link" data-category="camera">
                         <div class="card shadow">
                             <div class="product-image-container">
@@ -214,7 +220,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+           
 
                 <button class="go_home" onclick="window.location.href='../index.html'">Go home</button>
             </div>
