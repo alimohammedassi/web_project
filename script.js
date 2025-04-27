@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error loading navbar:", error);
       });
   }
+  
 
   // Set up sidebar toggle functionality
   const sidebarToggle = document.getElementById("sidebarToggle");
