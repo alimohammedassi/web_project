@@ -26,3 +26,4 @@ const products = [
   document.addEventListener('DOMContentLoaded', () => {
     populateProductsTable();
   });
+  
