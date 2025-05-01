@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- تعريف نوع الصفحة إنها HTML5 -->
     <meta charset="UTF-8" />
@@ -11,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- عنوان الصفحة اللي بيظهر في التاب -->
-    <title>Home page</title>
+    <title>TN-store</title>
 
     <!-- ربط ملف التنسيقات (CSS) لتصميم الصفحة -->
     <link rel="stylesheet" href="style.css" />
@@ -37,7 +39,7 @@
       <!-- فيه رابط للداشبورد لكنه متشال مؤقتًا -->
       <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
     </div>
-    
+
     <!-- المحتوى الرئيسي للصفحة -->
     <div class="content-wrapper">
       <header>
@@ -49,14 +51,12 @@
         <!-- قسم الترحيب الرئيسي بالصفحة بخلفية -->
         <section class="hero hero-with-bg">
           <!-- عنوان ترحيبي -->
-          <h1 class="fade-in">WELCOME TO  TN-STORE </h1>
+          <h1 class="fade-in">WELCOME TO TN-STORE</h1>
 
           <!-- جملة تعريفية بالموقع -->
           <p class="subtitle">
-          
             OUR WEBSITE IS A PLACE WHERE YOU CAN FIND THE BEST TECH PRODUCTS AND
             SERVICES.
-          
           </p>
         </section>
 
@@ -68,24 +68,39 @@
           <!-- شبكة عرض المنتجات -->
           <div class="products-grid">
             <div class="card shadow">
-              <img src="Images/Honor MagicBook Art 14_ World’s First 4320Hz PWM Dimming OLED Laptop Launched Globally Ajleeblog.jpeg"  class="product-image" />
+              <img
+                src="Images/Honor MagicBook Art 14_ World’s First 4320Hz PWM Dimming OLED Laptop Launched Globally Ajleeblog.jpeg"
+                class="product-image"
+              />
               <div class="card-content">
                 <h2>Honor MagicBook</h2>
               </div>
-            </div> <div class="card shadow">
-              <img src="Images/SONY 1000X M3 - Promotional Advertisement - Janith Lekamwasam.jpeg"  class="product-image" />
+            </div>
+            <div class="card shadow">
+              <img
+                src="Images/SONY 1000X M3 - Promotional Advertisement - Janith Lekamwasam.jpeg"
+                class="product-image"
+              />
               <div class="card-content">
                 <h2>SONY 1000X M3</h2>
               </div>
-            </div> <div class="card shadow">
-              <img src="Images/JBL Headphones - Firat Tuzunkan on Fstoppers.jpeg"  class="product-image" />
+            </div>
+            <div class="card shadow">
+              <img
+                src="Images/JBL Headphones - Firat Tuzunkan on Fstoppers.jpeg"
+                class="product-image"
+              />
               <div class="card-content">
                 <h2>JBL Headphones</h2>
               </div>
             </div>
             <!-- كارت المنتج الأول -->
             <div class="card shadow">
-              <img src="Images/laptop.jpg" alt="Gaming Laptop" class="product-image" />
+              <img
+                src="Images/laptop.jpg"
+                alt="Gaming Laptop"
+                class="product-image"
+              />
               <div class="card-content">
                 <h2>GAMER XRT 500</h2>
               </div>
@@ -105,14 +120,19 @@
 
             <!-- كارت المنتج الثالث -->
             <div class="card shadow">
-              <img src="Images/watch.jpg" alt="Smartwatch" class="product-image" />
+              <img
+                src="Images/watch.jpg"
+                alt="Smartwatch"
+                class="product-image"
+              />
               <div class="card-content">
                 <h2>Smart Watch X2</h2>
               </div>
             </div>
-
-          </div> <!-- نهاية المنتجات -->
-        </div> <!-- نهاية الكونتينر -->
+          </div>
+          <!-- نهاية المنتجات -->
+        </div>
+        <!-- نهاية الكونتينر -->
       </main>
 
       <!-- الفوتر بتاع الصفحة -->
@@ -128,7 +148,8 @@
           </div>
         </div>
       </footer>
-    </div> <!-- نهاية الـ content-wrapper -->
+    </div>
+    <!-- نهاية الـ content-wrapper -->
 
     <!-- تكرار لحاوية النافبار (غالبًا مش ضروري تتكرر هنا) -->
     <nav>
@@ -138,14 +159,13 @@
     <!-- سكريبت لتحميل نافبار خارجي من ملف NavBar.html -->
     <script>
       // بنستخدم fetch عشان نجيب النافبار من ملف خارجي بصيغة HTML
-      fetch('/NavBar.html')
-        .then(res => res.text()) // نحول الاستجابة لنص
-        .then(data => {
+      fetch("/NavBar.html")
+        .then((res) => res.text()) // نحول الاستجابة لنص
+        .then((data) => {
           // نحط النص (النافبار) في العنصر اللي id بتاعه navbar-container
-          document.getElementById('navbar-container').innerHTML = data;
+          document.getElementById("navbar-container").innerHTML = data;
         })
-        .catch(error => console.error('Error fetching navbar:', error)); // لو حصل خطأ نعرضه
+        .catch((error) => console.error("Error fetching navbar:", error)); // لو حصل خطأ نعرضه
     </script>
-    
   </body>
 </html>
