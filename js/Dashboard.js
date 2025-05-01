@@ -7,7 +7,7 @@ const products = [
     { name: 'Keyboard', price: 12, count: 3556 }
   ];
   
-  // Populate products table
+
   function populateProductsTable() {
     const tableBody = document.querySelector('#productsTable tbody');
     
@@ -22,7 +22,7 @@ const products = [
     });
   }
   
-  // Initialize the dashboard
+ 
   document.addEventListener('DOMContentLoaded', () => {
     populateProductsTable();
   });

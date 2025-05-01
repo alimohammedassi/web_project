@@ -3,42 +3,42 @@
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- ترميز UTF-8 لدعم كل اللغات -->
+  
     <meta charset="UTF-8" />
 
-    <!-- لجعل الصفحة متوافقة مع كل الأجهزة -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- عنوان الصفحة اللي بيظهر في التاب -->
+    
     <title>Page Title</title>
 
-    <!-- ربط ملف CSS الرئيسي -->
+  
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- تحميل ملفات JavaScript -->
-    <script src="/utility.js" defer></script>
+    
+    <script src="../js/utility.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- زر فتح القائمة الجانبية -->
+ 
     <button class="toggle-btn" id="sidebarToggle">☰ </button>
 
-    <!-- القائمة الجانبية -->
+    
     <div class="sidebar" id="sidebar">
       <a href="/index.html">Home</a>
       <a href="/pages/Setting.html">Settings</a>
      
-      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+     
     </div>
     
     <div class="content-wrapper">
       <header>
-        <!-- حاوية هيتحط فيها النافبار اللي جاي من ملف خارجي -->
+      
         <div id="navbar-container"></div>
       </header>
 
       <main>
-        <!-- محتوى صفحة من نحن -->
+      
         <div class="about-us-container">
           <h1>AboutUs</h1>
           <p>
@@ -53,21 +53,21 @@
 
           <br>
 
-          <!-- عنوان لفريق العمل -->
+     
           <h2> 👨‍💻Team members:</h2>
 
           <div class="team">
-            <!-- فرد من الفريق -->
+          
             <div class="team-member">
               <img src="/Images/ali_pic.jpg" alt="Team Member" />
               <h3>Eng.ALi Mohmmed</h3>
               <p>Front - end dev</p>
             </div>
 
-            <!-- فرد من الفريق -->
+            
             <div class="team-member">
               <img src="/Images/mohimg4.jpg" alt="Team Member" />
-              <h3>Eng.Mohmmed saaed</h3>
+              <h3>Eng.Mohammed </h3>
               <p>Back - end dev</p>
             </div>
 
@@ -85,7 +85,7 @@
               <p>Back - end dev</p>
             </div>
 
-            <!-- فرد من الفريق (الصورة فيها غلطة في الكود لأن مفيش علامة اقتباس مقفولة) -->
+           
             <div class="team-member">
               <img src="/Images/name.jpg" alt="Team Member" />
               <h3>Eng.Abdulrahman Samy</h3>
@@ -95,7 +95,7 @@
         </div>
       </main>
 
-      <!-- فوتر الصفحة -->
+    
       <footer>
         <div class="footer-content">
           <div class="footer-section">
@@ -121,23 +121,11 @@
           sidebarToggle.addEventListener("click", function () {
             sidebar.classList.toggle("active");
 
-            if (sidebar.classList.contains("active")) {
-              contentWrapper.style.marginLeft = "250px";
-              if (navbar) {
-                navbar.style.marginLeft = "250px";
-                navbar.style.width = "calc(100% - 250px)";
-              }
-            } else {
-              contentWrapper.style.marginLeft = "0";
-              if (navbar) {
-                navbar.style.marginLeft = "0";
-                navbar.style.width = "100%";
-              }
-            }
+           
           });
         }
       });
-    </script>
+    </script>s
 
     <!-- تحميل النافبار من ملف خارجي -->
     <script>

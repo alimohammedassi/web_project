@@ -59,7 +59,7 @@ class ShoppingCart {
 
 const cart = new ShoppingCart();
 
-// دالة لعرض عربة التسوق
+
 function showCartModal() {
     const modal = document.createElement('div');
     modal.className = 'cart-modal';
@@ -77,7 +77,7 @@ function showCartModal() {
 
     document.body.appendChild(modal);
 
-    // عرض العناصر
+   
     const itemsContainer = modal.querySelector('.cart-items-container');
     cart.cart.forEach(item => {
         const itemElement = document.createElement('div');
@@ -98,7 +98,7 @@ function showCartModal() {
         itemsContainer.appendChild(itemElement);
     });
 
-    // أحداث الأزرار
+    
     modal.querySelector('.close-cart').addEventListener('click', () => {
         document.body.removeChild(modal);
     });
@@ -112,24 +112,24 @@ function showCartModal() {
             } else if (item.quantity > 1) {
                 cart.updateQuantity(id, item.quantity - 1);
             }
-            showCartModal(); // إعادة تحميل السلة
+            showCartModal();
         });
     });
 
     modal.querySelectorAll('.remove-item').forEach(btn => {
         btn.addEventListener('click', (e) => {
             cart.removeItem(e.target.getAttribute('data-id'));
-            showCartModal(); // إعادة تحميل السلة
+            showCartModal(); 
         });
     });
 
     modal.querySelector('#checkoutBtn').addEventListener('click', () => {
         alert('Proceeding to checkout!');
-        // يمكنك توجيه المستخدم إلى صفحة الدفع هنا
+      
     });
 }
 
-// حدث لإظهار السلة عند النقر على الأيقونة
+
 document.addEventListener('DOMContentLoaded', () => {
     const cartIcon = document.getElementById('cartIcon');
     if (cartIcon) {

@@ -16,19 +16,7 @@
 
       sidebarToggle.addEventListener("click", function () {
         sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          contentWrapper.style.marginLeft = "250px";
-          if (navbar) {
-            navbar.style.marginLeft = "250px";
-            navbar.style.width = "calc(100% - 250px)";
-          }
-        } else {
-          contentWrapper.style.marginLeft = "0";
-          if (navbar) {
-            navbar.style.marginLeft = "0";
-            navbar.style.width = "100%";
-          }
-        }
+      
       });
 
       fetch('/NavBar.html')

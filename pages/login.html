@@ -38,18 +38,16 @@
 
       <script>
         document.getElementById('loginForm').addEventListener('submit', function (event) {
-          event.preventDefault(); // علشان يمنع الريلود الافتراضي
+          event.preventDefault(); 
 
           const email = document.getElementById('loginEmail').value.trim();
           const password = document.getElementById('loginPassword').value.trim();
 
           if (email === 'admin@admin.com' && password === 'admin') {
-            window.location.href = '/pages/Dashboard.html'; // صفحة الادمن
+            window.location.href = '/pages/Dashboard.html'; 
           } else if (email && password) {
-            window.location.href = '/index.html'; // صفحة اليوزر العادي
-          } else {
-            alert('من فضلك ادخل بيانات صحيحة');
-          }
+            window.location.href = '/index.html';
+          } 
         });
       </script>
       </main>
@@ -75,25 +73,7 @@
         const contentWrapper = document.querySelector(".content-wrapper");
         const navbar = document.querySelector("nav");
 
-        if (sidebarToggle && sidebar && contentWrapper) {
-          sidebarToggle.addEventListener("click", function () {
-            sidebar.classList.toggle("active");
-
-            if (sidebar.classList.contains("active")) {
-              contentWrapper.style.marginLeft = "250px";
-              if (navbar) {
-                navbar.style.marginLeft = "250px";
-                navbar.style.width = "calc(100% - 250px)";
-              }
-            } else {
-              contentWrapper.style.marginLeft = "0";
-              if (navbar) {
-                navbar.style.marginLeft = "0";
-                navbar.style.width = "100%";
-              }
-            }
-          });
-        }
+       
       });
     </script>
 
