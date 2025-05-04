@@ -1,57 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-   
     <meta charset="UTF-8" />
-
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-   
-    <title>Page Title</title>
-
-   
+    <title>Payment</title>
     <link rel="stylesheet" href="/style.css" />
+    <script src="../js/cart.js" defer></script>
 
-    
-    <script src="/js/cart.js" defer></script>
-    
+    <style>
+      .payment-container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      .payment-header {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .payment-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .order-summary {
+        padding: 1.5rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .order-items {
+        margin: 1rem 0;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .order-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .order-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 1rem;
+      }
+
+      .order-item-details {
+        flex: 1;
+      }
+
+      .order-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 2px solid #ddd;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .payment-form {
+        padding: 1.5rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .card-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #45a049;
+      }
+
+      .return-link {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        color: #666;
+        text-decoration: none;
+      }
+
+      .return-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .payment-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    
+    <button class="toggle-btn" id="sidebarToggle">☰</button>
 
-    <main>
-   
-    
-     
-      <div class="full-cart">
-        <div class="cart-modal-content">
-        
-          <span class="close-cart">&times;</span>
-          <h2 class="cart-title">Your Shopping Cart</h2>
-    
-          <div class="cart-items">
-            <div class="empty-cart">
-              <div class="empty-cart-icon">🛒</div>
-              <p>Your cart is empty</p>
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="payment-container">
+        <div class="payment-header">
+          <h1>CART🛒</h1>
+          <p>Complete your purchase by providing your payment details</p>
+        </div>
+
+        <div class="payment-grid">
+          <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="order-items" id="orderItems">
+              <!-- Order items will be dynamically inserted here -->
+            </div>
+            <div class="order-total">
+              <span>Total:</span>
+              <span id="orderTotal">&0</span>
             </div>
           </div>
-    
-          <div class="cart-summary">
-            <div class="cart-total">
-              <span class="cart-total-label">Total:</span>
-              <span class="cart-total-price">$0.00</span>
-            </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
-            <button class="go_home" onclick="window.location.href='../index.html'">Go home</button>
+          <script>
+            // عند الإنتقال للـ Checkout (أو صفحة التأكيد)
+            document
+              .getElementById("proceedToCheckout")
+              .addEventListener("click", function () {
+                const cartItems = getCartItems(); // افترض أن هذه دالة تُرجع عناصر السلة
+                const customerData = {
+                  name: document.getElementById("name").value,
+                  email: document.getElementById("email").value,
+                  phone: document.getElementById("phone").value,
+                  address: document.getElementById("address").value,
+                };
+
+                // تخزين البيانات في localStorage
+                const orderData = {
+                  items: cartItems,
+                  customer: customerData,
+                  total: calculateTotal(cartItems), // افترض أنك تحسب إجمالي المبلغ
+                };
+                localStorage.setItem("orderData", JSON.stringify(orderData));
+                window.location.href = "order-confirm.html"; // انتقل لصفحة التأكيد
+              });
+          </script>
+
+          <div class="payment-form">
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="address">Shipping Address</label>
+                <input type="text" id="address" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  class="form-control"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </div>
+
+              <div class="form-group card-row">
+                <div>
+                  <label for="cardName">Name on Card</label>
+                  <input
+                    type="text"
+                    id="cardName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="expDate">Exp Date</label>
+                  <input
+                    type="text"
+                    id="expDate"
+                    class="form-control"
+                    placeholder="MM/YY"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="cvv">CVV</label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    class="form-control"
+                    placeholder="123"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="submit-btn"
+                <button
+                class="go_home"
+                onclick="window.location.href='../pages/order-confirm.html'"
+              >
+                confirm
+              </button>
+            </form>
+
+            <a href="../pages/Products.html" class="return-link"
+              >Return to Products page</a
+            >
           </div>
         </div>
       </div>
-    </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Toggle sidebar functionality
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        if (sidebarToggle && sidebar) {
+          sidebarToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("active");
+          });
+        }
+
+        // Load cart items into the order summary
+        loadOrderSummary();
+
+        // Handle form submission
+        const paymentForm = document.getElementById("paymentForm");
+        if (paymentForm) {
+          paymentForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Validate form
+            if (validateForm()) {
+              // Process payment
+              processPayment();
+            }
+          });
+        }
+      });
+
+      function loadOrderSummary() {
+        const orderItemsContainer = document.getElementById("orderItems");
+        const orderTotalElement = document.getElementById("orderTotal");
+
+        // Make sure cart is loaded
+        if (window.cart && window.cart.cart) {
+          const cartItems = window.cart.cart;
+
+          // Clear existing content
+          orderItemsContainer.innerHTML = "";
+
+          if (cartItems.length === 0) {
+            // Show empty cart message
+            orderItemsContainer.innerHTML = `
+              <div class="empty-order">
+                <p>Your cart is empty. Add some products before checkout.</p>
+                <p><a href="/pages/Products.html">Browse Products</a></p>
+              </div>
+            `;
+            // Update total
+            orderTotalElement.textContent = "$0.00";
+          } else {
+            // Create order items
+            cartItems.forEach((item) => {
+              const orderItem = document.createElement("div");
+              orderItem.className = "order-item";
+              orderItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="order-item-details">
+                  <h3>${item.name}</h3>
+                  <p>$${item.price.toFixed(2)} × ${item.quantity}</p>
+                  <p><strong>$${(item.price * item.quantity).toFixed(
+                    2
+                  )}</strong></p>
+                </div>
+              `;
+              orderItemsContainer.appendChild(orderItem);
+            });
+
+            // Update total
+            const total = window.cart.getTotalPrice();
+            orderTotalElement.textContent = `$${total.toFixed(2)}`;
+          }
+        } else {
+          // Cart not loaded
+          orderItemsContainer.innerHTML = `
+            <div class="empty-order">
+              <p>Unable to load cart. Please try again.</p>
+              <p><a href="/cart.html">Return to Cart</a></p>
+            </div>
+          `;
+          orderTotalElement.textContent = "$0.00";
+        }
+      }
+
+      function validateForm() {
+        // Get form elements
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const city = document.getElementById("city").value.trim();
+        const country = document.getElementById("country").value.trim();
+        const cardNumber = document.getElementById("cardNumber").value.trim();
+        const cardName = document.getElementById("cardName").value.trim();
+        const expDate = document.getElementById("expDate").value.trim();
+        const cvv = document.getElementById("cvv").value.trim();
+
+        // Simple validation
+        if (
+          !fullName ||
+          !email ||
+          !address ||
+          !city ||
+          !country ||
+          !cardNumber ||
+          !cardName ||
+          !expDate ||
+          !cvv
+        ) {
+          alert("Please fill in all fields");
+          return false;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address");
+          return false;
+        }
+
+        // Validate card number (simple check for digits only)
+        const cardNumberRegex = /^\d{16}$/;
+        const cleanCardNumber = cardNumber.replace(/\s/g, "");
+        if (!cardNumberRegex.test(cleanCardNumber)) {
+          alert("Please enter a valid 16-digit card number");
+          return false;
+        }
+
+        // Validate expiration date (MM/YY format)
+        const expDateRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+        if (!expDateRegex.test(expDate)) {
+          alert("Please enter a valid expiration date (MM/YY)");
+          return false;
+        }
+
+        // Validate CVV (3 or 4 digits)
+        const cvvRegex = /^[0-9]{3,4}$/;
+        if (!cvvRegex.test(cvv)) {
+          alert("Please enter a valid CVV");
+          return false;
+        }
+
+        return true;
+      }
+
+      function processPayment() {
+        // In a real application, you would send the payment data to a server
+        // For this demo, we'll just show a success message and clear the cart
+
+        // Create order object with cart items and form data
+        const order = {
+          items: window.cart.cart,
+          total: window.cart.getTotalPrice(),
+          customer: {
+            name: document.getElementById("fullName").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            address: document.getElementById("address").value.trim(),
+            city: document.getElementById("city").value.trim(),
+            country: document.getElementById("country").value.trim(),
+          },
+          paymentMethod: "Credit Card",
+          date: new Date().toISOString(),
+        };
+
+        // Save order to localStorage (in a real app, this would go to a database)
+        const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+        orders.push(order);
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        // Clear the cart
+        window.cart.cart = [];
+        window.cart.saveCart();
+
+        // Show success message
+        alert("Payment successful! Your order has been placed.");
+
+        // Redirect to order confirmation page or home page
+        window.location.href = "/index.html";
+      }
+    </script>
     
-
-
   </body>
 </html>

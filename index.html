@@ -6,66 +6,43 @@
       rel="stylesheet"
     />
 
-    <!-- تعريف نوع الصفحة إنها HTML5 -->
     <meta charset="UTF-8" />
 
-    <!-- عشان الصفحة تبقى Responsive وتشتغل على الموبايل كويس -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- عنوان الصفحة اللي بيظهر في التاب -->
     <title>TN-store</title>
 
-    <!-- ربط ملف التنسيقات (CSS) لتصميم الصفحة -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- ربط ملف جافا سكريبت utility.js - غالبًا فيه دوال مساعدة عامة -->
     <script src="/js/utility.js" defer></script>
 
-    <!-- ربط ملف جافا سكريبت الرئيسي script.js - فيه التفاعل بتاع الصفحة -->
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- زرار لفتح وقفل القائمة الجانبية (Sidebar) -->
     <button class="toggle-btn" id="sidebarToggle">☰</button>
 
-    <!-- القائمة الجانبية (Sidebar) اللي فيها روابط -->
-    <div class="sidebar" id="sidebar">
-      <!-- رابط لصفحة الإعدادات -->
-      <a href="/pages/Setting.html">Settings</a>
-
-      <!-- رابط لصفحة التواصل معنا -->
-      <a href="/pages/Contect.html">Connect with us</a>
-
-      <!-- فيه رابط للداشبورد لكنه متشال مؤقتًا -->
-      <!-- <a href="/pages/Dashboard.html">Dashboard</a> -->
+     <div class="sidebar" id="sidebar">
+     
     </div>
 
-    <!-- المحتوى الرئيسي للصفحة -->
     <div class="content-wrapper">
       <header>
-        <!-- حاوية لعرض النافبار اللي هيتجاب من ملف خارجي -->
         <div id="navbar-container"></div>
       </header>
 
       <main>
-        <!-- قسم الترحيب الرئيسي بالصفحة بخلفية -->
         <section class="hero hero-with-bg">
-          <!-- عنوان ترحيبي -->
           <h1 class="fade-in">WELCOME TO TN-STORE</h1>
 
-          <!-- جملة تعريفية بالموقع -->
           <p class="subtitle">
             OUR WEBSITE IS A PLACE WHERE YOU CAN FIND THE BEST TECH PRODUCTS AND
             SERVICES.
           </p>
         </section>
 
-        <!-- قسم عرض المنتجات -->
         <div class="container">
-          <!-- عنوان القسم -->
           <h1 class="page-title">Featured Tech Products</h1>
 
-          <!-- شبكة عرض المنتجات -->
           <div class="products-grid">
             <div class="card shadow">
               <img
@@ -94,7 +71,7 @@
                 <h2>JBL Headphones</h2>
               </div>
             </div>
-            <!-- كارت المنتج الأول -->
+
             <div class="card shadow">
               <img
                 src="Images/laptop.jpg"
@@ -106,7 +83,6 @@
               </div>
             </div>
 
-            <!-- كارت المنتج الثاني -->
             <div class="card shadow">
               <img
                 src="Images/camara pic.jpg"
@@ -118,7 +94,6 @@
               </div>
             </div>
 
-            <!-- كارت المنتج الثالث -->
             <div class="card shadow">
               <img
                 src="Images/watch.jpg"
@@ -130,17 +105,14 @@
               </div>
             </div>
           </div>
-          <!-- نهاية المنتجات -->
         </div>
-        <!-- نهاية الكونتينر -->
       </main>
 
-      <!-- الفوتر بتاع الصفحة -->
       <footer>
         <div class="footer-content">
           <div class="footer-section">
             <h3>Use Cases</h3>
-            <!-- روابط بتوضح أنواع اللابتوبات حسب الاستخدام -->
+
             <a href="#">Gaming Laptops</a>
             <a href="#">Business Laptops</a>
             <a href="#">Workstations</a>
@@ -149,20 +121,15 @@
         </div>
       </footer>
     </div>
-    <!-- نهاية الـ content-wrapper -->
 
-    <!-- تكرار لحاوية النافبار (غالبًا مش ضروري تتكرر هنا) -->
     <nav>
       <div id="navbar-container"></div>
     </nav>
 
-    <!-- سكريبت لتحميل نافبار خارجي من ملف NavBar.html -->
     <script>
-      // بنستخدم fetch عشان نجيب النافبار من ملف خارجي بصيغة HTML
       fetch("/NavBar.html")
-        .then((res) => res.text()) // نحول الاستجابة لنص
+        .then((res) => res.text())
         .then((data) => {
-          // نحط النص (النافبار) في العنصر اللي id بتاعه navbar-container
           document.getElementById("navbar-container").innerHTML = data;
         })
         .catch((error) => console.error("Error fetching navbar:", error)); // لو حصل خطأ نعرضه

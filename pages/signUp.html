@@ -69,27 +69,34 @@
     
     <!-- Include the sidebar toggle functionality -->
     <!-- بعد الفورم مباشرة -->
-<script>
-  document.getElementById('signupForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById('signupName').value.trim();
-    const email = document.getElementById('signupEmail').value.trim();
-    const password = document.getElementById('signupPassword').value;
-    const confirmPassword = document.getElementById('signupConfirmPassword').value;
-
-    if (password !== confirmPassword) {
-      alert('كلمة المرور غير متطابقة');
-      return;
-    }
-
-    // هنا ممكن تخزن الداتا في localStorage لو حابب
-    // localStorage.setItem('user', JSON.stringify({ name, email, password }));
-
-    // بعد التسجيل الناجح، يروح للهوم بيج
-    window.location.href = '/index.html';
-  });
-</script>
+    <script>
+      document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const name = document.getElementById('signupName').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+        const password = document.getElementById('signupPassword').value;
+        const confirmPassword = document.getElementById('signupConfirmPassword').value;
+    
+        if (password !== confirmPassword) {
+          alert('Passwords do not match');
+          return;
+        }
+    
+        // Save data in localStorage
+        const user = {
+          name,
+          email,
+          password,
+          profileImage: '' // صورة افتراضية، هتتعدل بعدين
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+    
+        // Redirect to home page
+        window.location.href = '/index.html';
+      });
+    </script>
+    
 
     </script>
     <script>

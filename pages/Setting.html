@@ -11,6 +11,7 @@
     <title>Settings</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="../js/utility.js" defer></script>
+    <script src="../js/setting.js"></script>
 
     <style>
       /* ✅ Toast Style */
@@ -145,30 +146,6 @@
     <!-- ✅ Toast Element -->
     <div id="toast" class="toast">✅ Settings saved successfully!</div>
 
-    <!-- Sidebar Toggle -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sidebarToggle = document.getElementById("sidebarToggle");
-        const sidebar = document.getElementById("sidebar");
-        const contentWrapper = document.querySelector(".content-wrapper");
-        const navbar = document.querySelector("nav");
-
-        sidebarToggle.addEventListener("click", function () {
-          sidebar.classList.toggle("active");
-        });
-      });
-    </script>
-
-    <!-- Load Navbar -->
-    <script>
-      fetch("/NavBar.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navbar-container").innerHTML = data;
-        });
-    </script>
-
-    <!-- ✅ Save Button Logic with Toast -->
     <script>
       document
         .getElementById("saveButton")
@@ -181,8 +158,6 @@
             window.location.href = "/index.html";
           }, 2000); // 2 ثواني وبعدها يروح للهوم
         });
-
-      // Dark mode toggle
     </script>
   </body>
 </html>
