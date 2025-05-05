@@ -226,6 +226,7 @@
     </style>
   </head>
   <body>
+    <div id="navbar-container"></div>
     <button class="toggle-btn" id="sidebarToggle">☰</button>
 
     <div class="sidebar" id="sidebar">
@@ -531,6 +532,12 @@
         // Redirect to order confirmation page or home page
         window.location.href = "/index.html";
       }
+      fetch("../NavBar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error fetching navbar:", error));
     </script>
   </body>
 </html>
