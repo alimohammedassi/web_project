@@ -6,13 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("navbar-container").innerHTML = data;
 
         const cartIcon = document.getElementById("cartIcon");
-        if (cartIcon) {
-          cartIcon.addEventListener("click", showCartModal);
-        }
+       
       })
-      .catch((error) => {
-        console.error("Error loading navbar:", error);
-      });
+      
+      
   }
 
   const sidebarToggle = document.getElementById("sidebarToggle");

@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment</title>
+    <title>Shopping Cart</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="../js/cart.js" defer></script>
 
@@ -132,6 +132,92 @@
         text-decoration: underline;
       }
 
+      /* Added styles for the cart modal to ensure remove button works well */
+      .cart-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .cart-modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .close-cart {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .cart-items-container {
+        margin: 1rem 0;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        position: relative;
+      }
+
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 1rem;
+      }
+
+      .cart-item-details {
+        flex: 1;
+      }
+
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+
+      .quantity-btn {
+        background-color: #f0f0f0;
+        border: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .remove-item {
+        background-color: #7c0a02;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        margin: 1rem 0.5rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
       @media (max-width: 768px) {
         .payment-grid {
           grid-template-columns: 1fr;
@@ -162,32 +248,9 @@
             </div>
             <div class="order-total">
               <span>Total:</span>
-              <span id="orderTotal">&0</span>
+              <span id="orderTotal">$0.00</span>
             </div>
           </div>
-          <script>
-            // عند الإنتقال للـ Checkout (أو صفحة التأكيد)
-            document
-              .getElementById("proceedToCheckout")
-              .addEventListener("click", function () {
-                const cartItems = getCartItems(); // افترض أن هذه دالة تُرجع عناصر السلة
-                const customerData = {
-                  name: document.getElementById("name").value,
-                  email: document.getElementById("email").value,
-                  phone: document.getElementById("phone").value,
-                  address: document.getElementById("address").value,
-                };
-
-                // تخزين البيانات في localStorage
-                const orderData = {
-                  items: cartItems,
-                  customer: customerData,
-                  total: calculateTotal(cartItems), // افترض أنك تحسب إجمالي المبلغ
-                };
-                localStorage.setItem("orderData", JSON.stringify(orderData));
-                window.location.href = "order-confirm.html"; // انتقل لصفحة التأكيد
-              });
-          </script>
 
           <div class="payment-form">
             <h2>Payment Details</h2>
@@ -265,15 +328,7 @@
                 </div>
               </div>
 
-              <button
-                type="submit"
-                class="submit-btn"
-                <button
-                class="go_home"
-                onclick="window.location.href='../pages/order-confirm.html'"
-              >
-                confirm
-              </button>
+              <button type="submit" class="submit-btn">Confirm Order</button>
             </form>
 
             <a href="../pages/Products.html" class="return-link"
@@ -348,10 +403,24 @@
                   <p><strong>$${(item.price * item.quantity).toFixed(
                     2
                   )}</strong></p>
+                  <button class="remove-order-item" data-id="${
+                    item.id
+                  }">Remove Item</button>
                 </div>
               `;
               orderItemsContainer.appendChild(orderItem);
             });
+
+          
+            orderItemsContainer
+              .querySelectorAll(".remove-order-item")
+              .forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                  const id = parseInt(e.target.getAttribute("data-id"));
+                  window.cart.removeItem(id);
+                  loadOrderSummary(); 
+                });
+              });
 
             // Update total
             const total = window.cart.getTotalPrice();
@@ -454,8 +523,7 @@
         localStorage.setItem("orders", JSON.stringify(orders));
 
         // Clear the cart
-        window.cart.cart = [];
-        window.cart.saveCart();
+        window.cart.clearCart();
 
         // Show success message
         alert("Payment successful! Your order has been placed.");
@@ -464,6 +532,5 @@
         window.location.href = "/index.html";
       }
     </script>
-    
   </body>
 </html>
