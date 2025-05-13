@@ -384,9 +384,7 @@ nav {
   padding: 2rem;
   position: relative;
   z-index: 1;
- 
 }
-
 
 .hero-with-bg::before {
   content: "";
@@ -993,6 +991,7 @@ textarea.form-control {
   background: linear-gradient(135deg, #a31621, #8b1218);
   color: white;
   border: none;
+  margin-bottom: 20%;
   padding: 14px 25px;
   border-radius: 8px;
   font-size: 1.1rem;
@@ -1341,7 +1340,9 @@ p {
   margin: 0 10px;
 }
 
-.remove-item, .remove-order-item, .remove-cart-item {
+.remove-item,
+.remove-order-item,
+.remove-cart-item {
   background-color: #a31621;
   color: white;
   border: none;
@@ -1354,7 +1355,9 @@ p {
   font-weight: 500;
 }
 
-.remove-item:hover, .remove-order-item:hover, .remove-cart-item:hover {
+.remove-item:hover,
+.remove-order-item:hover,
+.remove-cart-item:hover {
   background-color: #a31621;
 }
 
@@ -1369,7 +1372,6 @@ p {
   font-size: 18px;
   font-weight: bold;
 }
-
 
 .full-cart {
   position: relative;
@@ -1403,25 +1405,23 @@ p {
   margin-top: 2rem;
 }
 
-
 .go_home {
   background: #8b1218;
   color: white;
+  margin-top: 4%;
   padding: 5rem 1.2rem;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   margin-left: 1rem;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .go_home:hover {
   background-color: #5e0700;
 }
-
-
 
 .auth-container {
   display: flex;

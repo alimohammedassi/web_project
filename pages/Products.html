@@ -10,6 +10,8 @@
     />
     <link rel="stylesheet" href="/style.css" />
     <script src="/utility.js" defer></script>
+    <script src="/js/product_detils.js"></script>
+    <script src="/js/cart.js"></script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function () {
         const sidebarToggle = document.getElementById("sidebarToggle");
@@ -85,10 +87,14 @@
                     class="product-image"
                   />
                 </div>
+
                 <div class="card-content">
                   <h2>Samsung Odyssey Neo G9</h2>
                   <p class="specs">57" • Mini-LED • 240Hz • 1000R Curved</p>
                   <p class="price">$2,499.99</p>
+                  <button class="add-to-cart-btn" data-product-id="1">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </a>
