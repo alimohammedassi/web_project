@@ -59,24 +59,106 @@
     </script>
   </head>
   <body>
-    <!-- Rest of the HTML remains the same until the card content -->
-    <div class="products-grid">
-      <!-- Example of updated card structure (repeat for all cards) -->
-      <div class="card-link" data-category="laptop">
-        <div class="card shadow">
-          <div class="product-image-container">
-            <img src="../images/laptop.jpg" alt="Gaming Laptop" class="product-image" />
+    <button class="toggle-btn" id="sidebarToggle">☰</button>
+    <div class="sidebar" id="sidebar">
+      <a href="/index.html">Home</a>
+      <a href="/pages/Setting.html">Settings</a>
+    </div>
+
+    <div class="content-wrapper">
+      <header>
+        <div id="navbar-container"></div>
+      </header>
+
+      <main>
+        <div class="container">
+          <h1 class="page-title">Featured Tech Products</h1>
+
+          <div class="filter-bar">
+            <label for="categoryFilter">Filter by Category:</label>
+            <select id="categoryFilter">
+              <option value="all">All</option>
+              <option value="laptop">Laptop</option>
+              <option value="camera">Camera</option>
+              <option value="watch">Watch</option>
+              <option value="headphone">Headphones</option>
+            </select>
           </div>
-          <div class="card-content">
-            <h2>GAMER XRT 500</h2>
-            <p class="specs">16GB RAM • 1TB SSD • RTX 4060</p>
-            <p class="price">$1,299</p>
-            <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="card-link" data-category="laptop">
+              <div class="card shadow">
+                <div class="product-image-container">
+                  <img src="../images/laptop.jpg" alt="Gaming Laptop" class="product-image" />
+                </div>
+                <div class="card-content">
+                  <h2>GAMER XRT 500</h2>
+                  <p class="specs">16GB RAM • 1TB SSD • RTX 4060</p>
+                  <p class="price">$1,299</p>
+                  <div class="card-actions">
+                    <a href="product-details.html?id=1" class="view-details">View Details</a>
+                    <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="card-link" data-category="camera">
+              <div class="card shadow">
+                <div class="product-image-container">
+                  <img src="../images/camara pic.jpg" alt="SONY Camera" class="product-image" />
+                </div>
+                <div class="card-content">
+                  <h2>SONY Alpha A7 III</h2>
+                  <p class="specs">24.2MP • 4K Video • 10fps</p>
+                  <p class="price">$1,999</p>
+                  <div class="card-actions">
+                    <a href="product-details.html?id=2" class="view-details">View Details</a>
+                    <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="card-link" data-category="watch">
+              <div class="card shadow">
+                <div class="product-image-container">
+                  <img src="../images/watch.jpg" alt="Smartwatch" class="product-image" />
+                </div>
+                <div class="card-content">
+                  <h2>Smart Watch X2</h2>
+                  <p class="specs">Heart Rate • GPS • 5 ATM</p>
+                  <p class="price">$299</p>
+                  <div class="card-actions">
+                    <a href="product-details.html?id=3" class="view-details">View Details</a>
+                    <button class="add-to-cart-btn" data-product-id="3">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add similar structure for other products -->
+          </div>
+
+          <button class="go_home" onclick="window.location.href='../index.html'">Go home</button>
+          <button class="go_home" onclick="window.location.href='../pages/pro2.html'">2</button>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Use Cases</h3>
+            <a href="#">Gaming Laptops</a>
+            <a href="#">Business Laptops</a>
+            <a href="#">Workstations</a>
+            <a href="#">Budget-Friendly Laptops</a>
           </div>
         </div>
-      </div>
-      <!-- Repeat similar structure for other products -->
+      </footer>
     </div>
-    <!-- Rest of the HTML remains the same -->
   </body>
 </html>
