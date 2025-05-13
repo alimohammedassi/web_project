@@ -18,9 +18,7 @@
     <nav>
       <div class="nav-links">
         <a href="/index.html">Home</a>
-
         <a href="/pages/Products.html">Products</a>
-
         <a href="/pages/AboutUs.html">About Us</a>
         <a href="/pages/Contect.html">Contect with Us👨‍💻</a>
         <a href="/pages/Setting.html"> Setting⚙️</a>
@@ -31,9 +29,9 @@
       </div>
 
       <div class="nav-buttons">
-        <a href="/pages/login.html" class="login">Login</a>
-
-        <a href="/pages/signUp.html" class="sign-up">Sign up</a>
+        <a href="/pages/login.html" class="login" id="loginBtn">Login</a>
+        <a href="/pages/signUp.html" class="sign-up" id="signupBtn">Sign up</a>
+        <button onclick="logout()" class="logout-btn" id="logoutBtn" style="display: none;">Logout</button>
 
         <a href="/pages/cart.html" class="cart-icon-container">
           <img
@@ -41,10 +39,39 @@
             alt="Shopping Cart"
             id="cartIcon"
           />
-          
-          
+          <span id="cartCount">0</span>
         </a>
       </div>
     </nav>
+
+    <script>
+      // Check login status on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        updateNavButtons(currentUser);
+      });
+
+      function updateNavButtons(user) {
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (user) {
+          loginBtn.style.display = 'none';
+          signupBtn.style.display = 'none';
+          logoutBtn.style.display = 'block';
+        } else {
+          loginBtn.style.display = 'block';
+          signupBtn.style.display = 'block';
+          logoutBtn.style.display = 'none';
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem('currentUser');
+        updateNavButtons(null);
+        window.location.href = '/index.html';
+      }
+    </script>
   </body>
 </html>
