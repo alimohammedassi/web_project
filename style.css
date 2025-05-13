@@ -125,3 +125,48 @@ body {
 
 .sidebar a {
   display: block;
+}
+
+/* Add new styles for logout button and cart buttons */
+.logout-btn {
+  background-color: #A31621;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #8B1218;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.view-details {
+  color: #A31621;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.add-to-cart-btn {
+  background-color: #A31621;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #8B1218;
+}
